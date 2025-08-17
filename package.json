@@ -40,10 +40,14 @@
     "test:coverage": "pnpm run test --coverage",
     "test:dev": "vitest"
   },
+  "dependencies": {
+    "koa": "^3.0.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@dhzh/eslint-config": "^1.9.0",
+    "@types/koa": "^3.0.0",
     "@types/node": "^24.3.0",
     "@vitest/coverage-v8": "^3.2.4",
     "bumpp": "^10.2.3",
