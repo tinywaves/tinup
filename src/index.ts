@@ -1,11 +1,7 @@
-import process from 'node:process';
-import Koa from 'koa';
+import TinupCore from './core';
 
-const app = new Koa();
-
-const port = Number(process.env.PORT) || 8080;
-const hostname = process.env.HOSTNAME || '0.0.0.0';
-
-app.listen(port, hostname, () => {
-  console.info(`Server running at http://${hostname}:${port}`);
+TinupCore.start({
+  name: 'Tinup Core App',
+  port: 11_111,
+  hostname: 'localhost',
 });
