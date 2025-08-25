@@ -50,8 +50,8 @@ export interface TinupCoreArgs {
 
 export enum TINUP_ENV {
   LOCAL = 'local',
-  DEV = 'dev',
-  TEST = 'test',
+  DEVELOPMENT = 'development',
+  TESTING = 'testing',
   STAGING = 'staging',
-  PROD = 'prod',
+  PRODUCTION = 'production',
 }

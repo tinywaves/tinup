@@ -7,16 +7,16 @@ export const env: EnvUtil = () => ({
     return process.env.TINUP_ENV === TINUP_ENV.LOCAL;
   },
   isDev() {
-    return process.env.TINUP_ENV === TINUP_ENV.DEV;
+    return process.env.TINUP_ENV === TINUP_ENV.DEVELOPMENT;
   },
   isTest() {
-    return process.env.TINUP_ENV === TINUP_ENV.TEST;
+    return process.env.TINUP_ENV === TINUP_ENV.TESTING;
   },
   isStaging() {
     return process.env.TINUP_ENV === TINUP_ENV.STAGING;
   },
   isProd() {
-    return process.env.TINUP_ENV === TINUP_ENV.PROD;
+    return process.env.TINUP_ENV === TINUP_ENV.PRODUCTION;
   },
   getEnv() {
     return (process.env.TINUP_ENV || TINUP_ENV.LOCAL) as TINUP_ENV;
