@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      dotenv:
+        specifier: ^17.2.1
+        version: 17.2.1
       koa:
         specifier: ^3.0.1
         version: 3.0.1

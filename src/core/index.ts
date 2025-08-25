@@ -1,7 +1,10 @@
 import process from 'node:process';
-import Koa from 'koa';
-import type { TinupCoreStartOptions } from './types';
 import path from 'node:path';
+import Koa from 'koa';
+import dotenv from 'dotenv';
+import { env } from './env';
+import { getMode } from './utils';
+import type { TinupCoreStartOptions, TinupCoreAppExtendedContext } from './types';
 
 const defaultOptions: Required<TinupCoreStartOptions> = {
   name: 'Tinup Core',
@@ -15,7 +18,10 @@ const TinupCore = {
    * @param options - The options for the server
    */
   start(options: TinupCoreStartOptions = defaultOptions) {
-    const app = new Koa();
+    const mode = getMode();
+    dotenv.config({ path: path.resolve(process.cwd(), `.env${mode ? `.${mode}` : ''}`) });
+
+    const app = new Koa<unknown, TinupCoreAppExtendedContext>();
 
     const processedOptions: Required<TinupCoreStartOptions> = {
       ...defaultOptions,
@@ -31,9 +37,15 @@ const TinupCore = {
     // Business directory
     const bizDir = path.resolve(baseDir, `.${path.sep}app`);
 
+    app.context.options = processedOptions;
+    app.context.baseDir = baseDir;
+    app.context.bizDir = bizDir;
+    app.context.envUtil = env();
+
     app.listen(port, hostname, () => {
       console.info(`Server running at http://${hostname}:${port}`);
       console.info(`Business directory: ${bizDir}`);
+      console.info(`Environment: ${app.context.envUtil.getEnv()}`);
     });
   },
 };

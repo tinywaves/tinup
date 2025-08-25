@@ -41,6 +41,7 @@
     "test:dev": "vitest"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "koa": "^3.0.1"
   },
   "devDependencies": {
