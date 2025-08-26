@@ -1,3 +1,5 @@
+import type Koa from 'koa';
+
 export interface TinupCoreStartOptions {
   /**
    * The name of the server.
@@ -55,3 +57,5 @@ export enum TINUP_ENV {
   STAGING = 'staging',
   PRODUCTION = 'production',
 }
+
+export type App = Koa<unknown, TinupCoreAppExtendedContext>;
